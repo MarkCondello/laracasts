@@ -12,3 +12,5 @@ require 'core/Router.php';
 $app['database'] = new QueryBuilder(
     Connection::make($app['config']['database'])
 );
+
+$app['siteRoot'] = 'http://' . Request::rootUrl() . '/'; // NOT WORKING AS EXPECTED

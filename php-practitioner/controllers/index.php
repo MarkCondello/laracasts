@@ -1,4 +1,4 @@
 <?php
-$tasks = $query->fetchAllTasks('todos', 'Task');
+$tasks = $app['database']->fetchAllTasks('todos', 'Task');
 
-include  'views/index.view.php';
+include 'views/index.view.php';

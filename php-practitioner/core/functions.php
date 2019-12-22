@@ -5,4 +5,3 @@ function dd($data)
     die(print_r($data));
     echo "</pre>";
 }
- ?>

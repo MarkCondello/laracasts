@@ -4,9 +4,12 @@ require 'core/functions.php';
 require 'core/Task.php';
 $query = require 'core/bootstrap.php';
 
-$router = new Router;
-require 'routes.php';
+//$router = new Router;
+//require 'routes.php';
+//require $router->direct($uri);
 
-$uri = trim($_SERVER['REQUEST_URI'], '/');
+require Router::load('routes.php')
+    ->direct(Request::uri());
 
-require $router->direct($uri);
+
+var_dump($app);

@@ -13,4 +13,5 @@ $app['database'] = new QueryBuilder(
     Connection::make($app['config']['database'])
 );
 
-$app['siteRoot'] = 'http://' . Request::rootUrl() . '/'; // NOT WORKING AS EXPECTED
+$app['siteRoot'] = 'http://' . Request::rootUrl() . '/';
+$app['appRoot'] = 'http://' . Request::rootUrl() . '/php-practitioner/';

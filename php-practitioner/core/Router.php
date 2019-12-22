@@ -1,27 +1,37 @@
 <?php
 class Router
 {
-    protected $routes = [];
+    protected $routes = [
+        'GET' => [],
+        'POST' => [],
+    ];
 
     public static function load($file)
     {
 
         $router = new static; //creates a new Router class instance
         require $file;
+        //print_r($router->routes);
         return $router;
     }
 
-    public function define($routes)
+    public function get($uri, $controller)
     {
-        $this->routes = $routes;
+        $this->routes['GET'][$uri] = $controller;
     }
 
-    public function direct($uri)
+    public function post($uri, $controller)
     {
-        //check for route key against the registered routes set by the define() method
-        if(array_key_exists($uri, $this->routes))
+        $this->routes['POST'][$uri] = $controller;
+    }
+
+
+    public function direct($uri, $requestType)
+    {
+         //check for route key against the registered routes set by the get() and post() methods
+        if(array_key_exists($uri, $this->routes[$requestType]))
         {
-            return $this->routes[$uri];
+            return $this->routes[$requestType][$uri];
         }
 
         throw new Exception("No route found for this uri.");

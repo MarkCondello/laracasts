@@ -16,4 +16,11 @@ class QueryBuilder
         //$tasks = $stmnt->fetchAll(PDO::FETCH_OBJ );
         return $stmnt->fetchAll(PDO::FETCH_CLASS, $intoClass);
     }
+
+    public function addRecord($table, $column, $data)
+    {
+        $stmnt = $this->db->prepare("INSERT INTO {$table} ({$column}) VALUES ('{$data}');");
+        $stmnt->execute();
+       // print_r($stmnt);
+    }
 }

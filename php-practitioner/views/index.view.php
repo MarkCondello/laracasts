@@ -1,18 +1,9 @@
-<?php
-include 'partials/head.php';
+<?php include 'partials/head.php'; ?>
 
-$content =  "<h1>Tasks</h1><ul>";
-foreach($tasks as $task):
-    if( $task->completed){
-      $content .=  "<li><strike>{$task->description}</strike></li>";
-        } else {
-        $content .= "<li>{$task->description}</li>";
-        }
-endforeach;
-$content .= "<ul>";
+<h1>Submit name</h1>
 
-echo $content;
-
-//include 'templates/site.php';
-
-include 'partials/footer.php';
+    <form action="/names" method="POST">
+        <input name="name" />
+        <input type="submit" value="Send">
+    </form>
+<?php include 'partials/footer.php'; ?>

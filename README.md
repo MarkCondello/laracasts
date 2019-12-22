@@ -9,9 +9,9 @@ The main application logic is contained within core/bootstrap.php which is requi
 
 A static method from a Router class named load() receives a routes.php file. This routes.php file contains an associative array with uri to controller key value pairs. The load method returns a static instance of the Routes class so the application can access other methods available from it eg the define() and direct() methods.
 
-In routes.php with an array of routes references the $router static class reference and uses the define method to set the routes for the application. These values are stored in the Router class array property named $routes. 
+In routes.php with an array of routes calls the $router static class reference and uses the define method to set the routes for the application. These values are stored in the Router class array property named $routes. 
 
-The direct() method takes a uri and checks for matching uri's in the $routes array using array_key_exists() function. If a match is found, the direct method returns the associated controller.
+The direct() method takes a uri which checks for matching uri's in the $routes array using array_key_exists() function that references the associated array created in routes.php. If a match is found, the direct method returns the associated controller for that uri.
 
 ## Other details
 

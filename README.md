@@ -1,6 +1,6 @@
-#Laracast Routing Project
+# Laracast Routing Project
 
-##Application info
+## Application info
 This codebase focuses on developing an understanding of MVC frameworks by building a routing system which receives requests, passes them to a controller and provides a view to a uri.
 
 The application loads through index.php and will require setting up a vhost in order for the uri mapping to work.
@@ -13,7 +13,7 @@ In routes.php with an array of routes references the $router static class refere
 
 The direct() method takes a uri and checks for matching uri's in the $routes array using array_key_exists() function. If a match is found, the direct method returns the associated controller.
 
-##Other details
+## Other details
 
 A config.php file is used to set up the database connection.
 This file is in turn included in the bootstrap.php file as a key value within the $app array.

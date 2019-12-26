@@ -1,5 +1,5 @@
 <?php
 include 'partials/head.php'; ?>
-<h2>Thank you for registering <?= $name; ?></h2>
+<h2><?= $name; ?> is assigned to the <?= $todo_item->description ?> todo item.</h2>
 
 <?php include 'partials/footer.php'; ?>

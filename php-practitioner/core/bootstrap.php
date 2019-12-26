@@ -6,18 +6,21 @@ App::bind('config', require 'config.php');
 App::bind('siteRoot',  'http://' . Request::rootUrl() . '/');
 App::bind('appRoot', 'http://' . Request::rootUrl() . '/php-practitioner/');
 
-//$app = [];
-//$app['config'] = require 'config.php';
-//require 'core/database/Connection.php';
-//require 'core/database/QueryBuilder.php';
-//require 'core/Request.php';
-//require 'core/Router.php';
 
 App::bind('database', new QueryBuilder(
     Connection::make(App::get('config')['database'])
     )
 );
 
-//$app['siteRoot'] = 'http://' . Request::rootUrl() . '/';
-//$app['appRoot'] = 'http://' . Request::rootUrl() . '/php-practitioner/';
-//$test = App::get("test");
+
+function view($name, $data = [])
+{
+    extract($data); // creates name variable from an array eg $name = 'foo'.
+    return require "views/{$name}.view.php";
+}
+
+function redirect($path)
+{
+    header("Location: /{$path}");
+
+}

@@ -1,4 +1,6 @@
 <?php
+namespace App\Core\Services;
+use PDO;
 
 class QueryBuilder
 {

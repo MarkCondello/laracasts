@@ -1,4 +1,10 @@
 <?php
+
+namespace App\Controllers;
+use App\core\App;
+use App\core\services\Connection;
+use PDO;
+
 class UsersController {
 
     public function index(){

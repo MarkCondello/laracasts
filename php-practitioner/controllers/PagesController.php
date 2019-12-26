@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Controllers;
+
+
 class PagesController
 {
     public function home(){
@@ -20,18 +23,4 @@ class PagesController
             'title' => $title
             ]);
      }
-
-//    public function addName(){
-//        $name = $_POST['name'];
-//        $todo_id = $_POST['todo'];
-//
-//        $args = [
-//            'name' => $name,
-//            'todo_id' => $todo_id
-//        ];
-//
-//        App::get('database')->insert('author', $args);
-//        header('Location: /');
-//        return;
-//    }
 }

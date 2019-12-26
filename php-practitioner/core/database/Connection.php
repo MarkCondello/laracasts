@@ -1,4 +1,7 @@
 <?php
+namespace App\Core\Services;
+use PDO;
+
 class Connection{
     static public function make($config){
         try {

@@ -1,3 +1,4 @@
+<?php use App\Core\App; ?>
 <nav>
     <ul>
         <li><a href="<?= App::get('siteRoot'); ?>">Home</a></li>

@@ -1,4 +1,6 @@
 <?php
+namespace App\Core;
+
 class Router
 {
     protected $routes = [
@@ -37,8 +39,9 @@ class Router
         throw new Exception("No route found for this uri.");
     }
 
-    protected function callAction($controller, $action){
-
+    protected function callAction($controller, $action)
+    {
+        $controller =  "App\\Controllers\\{$controller}";
         $controller = new $controller;
         if(method_exists($controller, $action)){
             return $controller->$action();

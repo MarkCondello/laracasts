@@ -1,4 +1,8 @@
 <?php
+
+use App\Core\{App, Request};
+use App\Core\Services\{QueryBuilder, Connection};
+
 //composer class autoload dependency
 require 'vendor/autoload.php';
 //store application settings in a the register array inside App class
@@ -12,7 +16,7 @@ App::bind('database', new QueryBuilder(
     )
 );
 
-
+//helper functions
 function view($name, $data = [])
 {
     extract($data); // creates name variable from an array eg $name = 'foo'.
@@ -22,5 +26,4 @@ function view($name, $data = [])
 function redirect($path)
 {
     header("Location: /{$path}");
-
 }

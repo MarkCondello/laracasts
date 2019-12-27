@@ -1,7 +1,6 @@
 <?php
-require 'core/functions.php';
-require 'core/bootstrap.php';
-
+require 'app/core/functions.php';
+require 'app/core/bootstrap.php';
 
 use App\Core\{Router, Request};
 

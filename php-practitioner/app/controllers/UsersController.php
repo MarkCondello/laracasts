@@ -3,13 +3,23 @@
 namespace App\Controllers;
 use App\core\App;
 use App\core\services\Connection;
+use App\Models\Task;
 use PDO;
 
 class UsersController {
 
     public function index(){
+
+//        $args = [
+////            'description' => 'Test test update desc again',
+////            'completed' => 0
+////        ];
+////
+////        Task::update($args, 2);
+///
+        Task::delete(5);
+
         $tasks = App::get('database')->selectAll('todos');
-        //$authors = $app['database']->selectAll('author');
 
         $db = Connection::make(App::get('config')['database']);
         $query =  $db->prepare("SELECT  name, description

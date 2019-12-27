@@ -9,4 +9,4 @@
     <link rel="stylesheet" href="/views/inc/style.css">
 </head>
 <body>
-<?php include 'views/partials/nav.php' ?>
+<?php include 'app/views/partials/nav.php' ?>

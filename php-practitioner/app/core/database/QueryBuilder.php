@@ -2,6 +2,7 @@
 namespace App\Core\Services;
 use PDO;
 
+//Query builder is included globally under App['database'];
 class QueryBuilder
 {
     protected $db;
@@ -29,7 +30,7 @@ class QueryBuilder
     {
         $keys = implode(', ', array_keys($parameters));
 
-        $values = implode( ', ', array_map(function($param){
+        $values = implode(', ', array_map(function ($param) {
                 return (":" . $param);
             }, array_keys($parameters))
         );
@@ -39,19 +40,50 @@ class QueryBuilder
             $table, $keys, $values
         );
 
-        //var_dump($sql);
 
         try {
-           // $stmt = $this->db->prepare('INSERT INTO author (name, todo_id) VALUES (:name, :todo_id)');
             $stmt = $this->db->prepare($sql);
             $stmt->execute($parameters);
 
-        } catch(Exception $e){
-              die('Something went wrong. <br>' . $e);
+        } catch (Exception $e) {
+            die('Something went wrong. <br>' . $e);
         }
-//        $stmt->execute('INSERT INTO %s (%s) VALUES (%s)');
-//        $stmt->execute();
     }
+
+    public function update($table, $parameters, $id)
+    {
+        $keyValues = implode(', ', array_map(function ($param) {
+                return ($param . " = :" . $param);
+            }, array_keys($parameters))
+        );
+
+        $sql = sprintf(
+            "UPDATE %s SET %s WHERE id = {$id}",
+            $table, $keyValues
+        );
+
+        // die(var_dump($sql));
+
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute($parameters);
+
+        } catch (Exception $e) {
+            die('Something went wrong. <br>' . $e);
+        }
+    }
+
+    public function delete($table, $id)
+    {
+        try {
+            $stmt = $this->db->prepare("DELETE FROM {$table} WHERE id = {$id}");
+            $stmt->execute();
+        } catch (\Exception $e) {
+            die('Something went wrong. <br>' . $e);
+        }
+    }
+
+
 //
 //    public function query($query){
 //        $this->stmt = $this->db->prepare($query);
